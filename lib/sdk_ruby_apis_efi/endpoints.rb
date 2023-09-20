@@ -86,7 +86,7 @@ module SdkRubyApisEfi
       end
       headers = {
         "accept" => "application/json",
-        "api-sdk" => "ruby-#{SdkRubyApisEfi::VERSION}"
+        "api-sdk" => "efi-ruby-#{SdkRubyApisEfi::VERSION}"
       }
       
       if headersComplement.any?
@@ -136,7 +136,7 @@ module SdkRubyApisEfi
 
       headers = {
         "accept" => "application/json",
-        "api-sdk" => "ruby-#{SdkRubyApisEfi::VERSION}"  
+        "api-sdk" => "efi-ruby-#{SdkRubyApisEfi::VERSION}"  
       }
 
       auth_headers = {
