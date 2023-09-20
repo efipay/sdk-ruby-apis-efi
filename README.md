@@ -68,7 +68,7 @@ Just remember to set the correct credentials inside `examples/credentials.rb` be
 
 ## Additional documentation
 
-The full documentation with all available endpoints is in https://dev.sejaefi.com.br/.
+The full documentation with all available endpoints is in https://dev.efipay.com.br/.
 
 ## Changelog
 
