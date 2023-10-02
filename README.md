@@ -51,7 +51,7 @@ charge = {
   }]
 }
 
-response = efipay.create_charge(body: charge)
+response = efipay.createCharge(body: charge)
 puts response
 ```
 
@@ -60,7 +60,7 @@ puts response
 You can run the examples inside `examples` with the following command:
 
 ```bash
-$ ruby examples/create_charge.rb
+$ ruby examples/createCharge.rb
 ```
 
 Just remember to set the correct credentials inside `examples/credentials.rb` before running.
