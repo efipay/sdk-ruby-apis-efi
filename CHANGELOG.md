@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 1.0.2 (2023-11-06)
+--------------------------
+* feat: ofCancelSchedulePix added into Open Finance
+
 Version 1.0.1 (2023-09-20)
 --------------------------
 * docs: Updated examples
