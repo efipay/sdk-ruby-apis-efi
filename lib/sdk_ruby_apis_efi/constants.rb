@@ -379,59 +379,63 @@ module SdkRubyApisEfi
                 },
                 ENDPOINTS: {
                     authorize: {
-                        route: "/open-finance/oauth/token",
+                        route: "/v1/oauth/token",
                         method: "post"
                     },
                     ofConfigUpdate: {
-                        route: "/open-finance/config",
+                        route: "/v1/config",
                         method: "put"
                     },
                     ofConfigDetail: {
-                        route: "/open-finance/config",
+                        route: "/v1/config",
                         method: "get"
                     },
                     ofListParticipants: {
-                        route: "/open-finance/participantes",
+                        route: "/v1/participantes",
                         method: "get"
                     },
                     ofStartPixPayment: {
-                        route: "/open-finance/pagamentos/pix",
+                        route: "/v1/pagamentos/pix",
                         method: "post"
                     },
                     ofListPixPayment: {
-                        route: "/open-finance/pagamentos/pix",
+                        route: "/v1/pagamentos/pix",
                         method: "get"
                     },
                     ofDevolutionPix: {
-                        route: "/open-finance/devolucao/pagamento/pix",
+                        route: "/v1/pagamentos/pix/:identificadorPagamento/devolver",
                         method: "post"
-                    }
+                    },
+                    ofCancelSchedulePix: {
+                    route: "/v1/pagamentos/pix/:identificadorPagamento/cancelar",
+                    method: "patch"
+                    },
                 }
             }
             PAYMENTS = { 
                 URL: {
                     production: "https://pagarcontas.api.efipay.com.br",
-                    sandbox: "https://pagarcontas.api.efipay.com.br"
+                    sandbox: nil
                 },
                 ENDPOINTS: {
                     authorize: {
-                        route: "/oauth/token",
+                        route: "/v1/oauth/token",
                         method: "post"
                     },
                     payDetailBarcode: {
-                        route: "/pagamento/codBarras/:codBarras",
+                        route: "/v1/codBarras/:codBarras",
                         method: "get"
                     },
                     payRequestBarcode: {
-                        route: "/pagamento/codBarras/:codBarras",
+                        route: "/v1/codBarras/:codBarras",
                         method: "post"
                     },
                     payDetailPayment: {
-                        route: "/pagamento/:idPagamento",
+                        route: "/v1/:idPagamento",
                         method: "get"
                     },
                     payListPayments: {
-                        route: "/pagamento/resumo",
+                        route: "/v1/resumo",
                         method: "get"
                     }
                 }
@@ -439,39 +443,39 @@ module SdkRubyApisEfi
             ACCOUNTS_OPENING = {
                 URL: {
                     production: "https://abrircontas.api.efipay.com.br",
-                    sandbox: "https://abrircontas.api.efipay.com.br"
+                    sandbox: "https://abrircontas-h.api.efipay.com.br"
                 },
                 ENDPOINTS: {
                     authorize: {
-                        route: "/oauth/token",
+                        route: "/v1/oauth/token",
                         method: "post"
                     },
                     createAccount: {
-                        route: "/cadastro/conta-simplificada",
+                        route: "/v1/conta-simplificada",
                         method: "post"
                     },
                     getAccountCredentials: {
-                        route: "/cadastro/conta-simplificada/:idContaSimplificada/credenciais",
+                        route: "/v1/conta-simplificada/:idContaSimplificada/credenciais",
                         method: "get"
                     },
                     createAccountCertificate: {
-                        route: "/cadastro/conta-simplificada/:idContaSimplificada/certificado",
+                        route: "/v1/conta-simplificada/:idContaSimplificada/certificado",
                         method: "post"
                     },
                     accountConfigWebhook: {
-                        route: "/cadastro/webhook",
+                        route: "/v1/webhook",
                         method: "post"
                     },
                     accountListWebhook: {
-                        route: "/cadastro/webhooks",
+                        route: "/v1/webhooks",
                         method: "get"
                     },
                     accountDetailWebhook: {
-                        route: "/cadastro/webhook/:identificadorWebhook",
+                        route: "/v1/webhook/:identificadorWebhook",
                         method: "get"
                     },
                     accountDeleteWebhook: {
-                        route: "/cadastro/webhook/:identificadorWebhook",
+                        route: "/v1/webhook/:identificadorWebhook",
                         method: "delete"
                     }
                 }
