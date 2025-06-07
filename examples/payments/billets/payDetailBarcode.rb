@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,7 +15,7 @@ options = {
 }
 
 params = {
-    codBarras: "36400000000000000000000000000000000000000000000"
+  codBarras: "36400000000000000000000000000000000000000000000"
 }
 
 efipay = SdkRubyApisEfi.new(options)

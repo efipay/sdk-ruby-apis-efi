@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -8,11 +10,11 @@ options = {
 }
 
 params = {
-  id: 508222357
+  id: 508_222_357
 }
 
 body = {
-  email: 'oldbuck@gerencianet.com.br' 
+  email: "oldbuck@gerencianet.com.br"
 }
 
 efipay = SdkRubyApisEfi.new(options)

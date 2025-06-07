@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -15,7 +17,7 @@ options = {
 gn = Gerencianet.new(options)
 
 params = {
-    nome: "Gerencianet",
+  nome: "Gerencianet"
 }
 
 puts gn.of_list_participants(params: params)

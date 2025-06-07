@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # example
 module CREDENTIALS
   CLIENT_ID = "Client_Id"

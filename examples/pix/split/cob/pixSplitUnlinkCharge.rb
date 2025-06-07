@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -19,4 +21,3 @@ params = {
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.pixSplitUnlinkCharge(params: params)
-

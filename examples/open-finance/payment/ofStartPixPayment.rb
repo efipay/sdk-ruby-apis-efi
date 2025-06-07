@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -15,13 +17,13 @@ options = {
 gn = Gerencianet.new(options)
 
 headers = {
-    'x-idempotency-key': "et sedaute sint officiapariatur amet tute sum"
+  'x-idempotency-key': "et sedaute sint officiapariatur amet tute sum"
 }
 
 body = {
   pagador: {
     idParticipante: "75db457a-612d-4d62-b557-ba9d32b05216",
-    cpf: "12345678909",
+    cpf: "12345678909"
   },
   favorecido: {
     contaBanco: {

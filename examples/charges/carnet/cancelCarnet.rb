@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -6,9 +8,9 @@ options = {
   client_secret: CREDENTIALS::CLIENT_SECRET,
   sandbox: CREDENTIALS::SANDBOX
 }
- 
+
 params = {
-  id: 34779162
+  id: 34_779_162
 }
 
 efipay = SdkRubyApisEfi.new(options)

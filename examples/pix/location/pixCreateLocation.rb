@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,7 +15,7 @@ options = {
 }
 
 body = {
-    tipoCob: "cob"
+  tipoCob: "cob"
 }
 
 efipay = SdkRubyApisEfi.new(options)

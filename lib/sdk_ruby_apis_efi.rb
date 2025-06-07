@@ -10,4 +10,3 @@ module SdkRubyApisEfi
     Endpoints.new(options)
   end
 end
-

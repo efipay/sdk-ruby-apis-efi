@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require "date"
 require_relative "../../credentials"
 
@@ -7,7 +9,6 @@ options = {
   client_secret: CREDENTIALS::CLIENT_SECRET,
   sandbox: CREDENTIALS::SANDBOX
 }
-
 
 body = {
   expire_at: "2022-12-30",

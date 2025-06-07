@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -28,7 +30,7 @@ body = {
   }],
   payment: {
     banking_billet: {
-      expire_at: '2020-09-09',
+      expire_at: "2020-09-09",
       customer: {
         name: "Gorbadoc Oldbuck",
         email: "oldbuck@gerencianet.com.br",
@@ -42,4 +44,3 @@ body = {
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.createOneStepCharge(body: body)
-

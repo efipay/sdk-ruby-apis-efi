@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -8,7 +10,7 @@ options = {
 }
 
 params = {
-  id: 508230748
+  id: 508_230_748
 }
 
 body = {
@@ -34,8 +36,6 @@ body = {
     }
   }
 }
-
-
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.definePayMethod(params: params, body: body)

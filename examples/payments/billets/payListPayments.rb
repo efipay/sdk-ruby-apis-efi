@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,8 +15,8 @@ options = {
 }
 
 params = {
-    dataInicio: "2022-01-01",
-    dataFim: "2024-12-31"
+  dataInicio: "2022-01-01",
+  dataFim: "2024-12-31"
 }
 
 efipay = SdkRubyApisEfi.new(options)

@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,21 +15,20 @@ options = {
 }
 
 body = {
-    pix: {
-        receberSemChave: true,
-        chaves: {
-            "sua_chave": {
-                recebimento: {
-                    txidObrigatorio: true,
-                    qrCodeEstatico: {
-                        recusarTodos: false
-                    }
-                }
-            }
+  pix: {
+    receberSemChave: true,
+    chaves: {
+      "sua_chave": {
+        recebimento: {
+          txidObrigatorio: true,
+          qrCodeEstatico: {
+            recusarTodos: false
+          }
         }
+      }
     }
+  }
 }
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.updateAccountConfig(body: body)
-
