@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -8,7 +10,7 @@ options = {
 }
 
 params = {
-  id: 94641 
+  id: 94_641
 }
 
 body = {
@@ -22,10 +24,9 @@ body = {
     billet_discount: 10,
     card_discount: 10,
     expire_at: "2022-12-30",
-    request_delivery_address: false,
+    request_delivery_address: false
   }
 }
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.createOneStepSubscriptionLink(params: params, body: body)
-

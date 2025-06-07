@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -8,7 +10,7 @@ options = {
 }
 
 params = {
-  id: 34779162,
+  id: 34_779_162,
   parcel: 2
 }
 

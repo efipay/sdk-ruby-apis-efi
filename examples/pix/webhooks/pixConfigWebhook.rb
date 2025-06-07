@@ -1,11 +1,13 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
 require "net/http"
 require "openssl"
 
-#verificar o mtls
+# verificar o mtls
 
 options = {
   client_id: CREDENTIALS::CLIENT_ID,
@@ -15,13 +17,12 @@ options = {
   "x-skip-mtls-checking": "true"
 }
 
-
 params = {
-    chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
+  chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
 }
 
 body = {
-    webhookUrl: "https://webhook.site/c1f56ce5-404d-4863-a895-b026f9c0f63a"
+  webhookUrl: "https://webhook.site/c1f56ce5-404d-4863-a895-b026f9c0f63a"
 }
 
 efipay = SdkRubyApisEfi.new(options)

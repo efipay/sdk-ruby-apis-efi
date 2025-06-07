@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
-gem "coveralls", require: false
-gem "uri" 
-gem "http" 
-gem "cgi" 
-gem "json" 
 gem "base64"
+gem "cgi"
+gem "coveralls", require: false
+gem "http"
+gem "json"
+gem "uri"
 # require "pry"
 # Pry.start
 

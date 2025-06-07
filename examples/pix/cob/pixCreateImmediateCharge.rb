@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,18 +15,18 @@ options = {
 }
 
 body = {
-    calendario: {
-        expiracao: 3600
-    },
-    devedor: {
-        cpf: "12345678909",
-        nome: "Francisco da Silva"
-    },
-    valor: {
-        original: "0.01"
-    },
-    chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86",
-    solicitacaoPagador: "Cobrança dos serviços prestados."
+  calendario: {
+    expiracao: 3600
+  },
+  devedor: {
+    cpf: "12345678909",
+    nome: "Francisco da Silva"
+  },
+  valor: {
+    original: "0.01"
+  },
+  chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86",
+  solicitacaoPagador: "Cobrança dos serviços prestados."
 }
 
 efipay = SdkRubyApisEfi.new(options)

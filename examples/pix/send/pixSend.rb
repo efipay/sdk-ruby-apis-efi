@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -13,19 +15,18 @@ options = {
 }
 
 params = {
-    idEnvio: "0249756789163473799"
+  idEnvio: "0249756789163473799"
 }
 
 body = {
-    valor: "0.01",
-    pagador: {
-        chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
-    },
-    favorecido: {
-        chave: "10567056635"
-    }
+  valor: "0.01",
+  pagador: {
+    chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
+  },
+  favorecido: {
+    chave: "10567056635"
+  }
 }
 
-efipay = SdkRubyApisEfi.new(options)
+SdkRubyApisEfi.new(options)
 puts efipaypixSend(params: params, body: body)
-

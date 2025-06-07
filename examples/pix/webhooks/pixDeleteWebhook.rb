@@ -1,10 +1,11 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
 require "net/http"
 require "openssl"
-
 
 options = {
   client_id: CREDENTIALS::CLIENT_ID,
@@ -14,9 +15,8 @@ options = {
 }
 
 params = {
-    chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
+  chave: "7f4151c7-49a5-4e95-ab24-55bc8f1a2e86"
 }
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.pixDeleteWebhook(params: params)
-

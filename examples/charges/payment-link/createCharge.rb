@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 options = {
@@ -17,8 +19,7 @@ body = {
     name: "Default Shipping Cost",
     value: 100
   }]
-} 
+}
 
 efipay = SdkRubyApisEfi.new(options)
 puts efipay.createCharge(body: body)
-

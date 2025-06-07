@@ -1,4 +1,6 @@
-require 'sdk_ruby_apis_efi'
+# frozen_string_literal: true
+
+require "sdk_ruby_apis_efi"
 require_relative "../../credentials"
 
 require "uri"
@@ -14,9 +16,9 @@ options = {
 
 gn = Gerencianet.new(options)
 
-params = { 
-    inicio: "2023-01-01",
-    fim: "2023-12-31"
+params = {
+  inicio: "2023-01-01",
+  fim: "2023-12-31"
 }
 
 puts gn.of_list_pix_payment(params: params)
