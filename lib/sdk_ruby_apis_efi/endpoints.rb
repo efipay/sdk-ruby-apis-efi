@@ -21,6 +21,11 @@ module SdkRubyApisEfi
       @open_finance = Constants::APIs::OPEN_FINANCE
       @payments = Constants::APIs::PAYMENTS
       @accounts_opening = Constants::APIs::ACCOUNTS_OPENING
+      # HTTP.default_options = HTTP::Options.new(features: {
+      #                                      logging: {
+      #                                        logger: Logger.new(STDOUT)
+      #                                      }
+      #                                    })
     end
 
     def method_missing(name, **kwargs)
@@ -92,7 +97,7 @@ module SdkRubyApisEfi
 
       headers["x-skip-mtls-checking"] = @options[:"x-skip-mtls-checking"] if @options[:"x-skip-mtls-checking"]
 
-      @token = @token.parse
+      #@token = @token.parse
 
       if @options.key?(:certificate)
 
@@ -152,7 +157,7 @@ module SdkRubyApisEfi
 
       raise "unable to authenticate" if response.status.to_s == STATUS::UNAUTHORIZED
 
-      @token = response
+      @token = response.parse
     end
 
     def get_url
