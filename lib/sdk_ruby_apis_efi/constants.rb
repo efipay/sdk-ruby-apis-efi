@@ -382,6 +382,10 @@ module SdkRubyApisEfi
           listPixRecurring: {
             route: "/v2/rec/",
             method: "get"
+          },
+          createLocationRecurring: {
+            route: "/v2/locrec",
+            method: "post"
           }
         }
       }.freeze
