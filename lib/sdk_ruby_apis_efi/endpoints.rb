@@ -21,11 +21,11 @@ module SdkRubyApisEfi
       @open_finance = Constants::APIs::OPEN_FINANCE
       @payments = Constants::APIs::PAYMENTS
       @accounts_opening = Constants::APIs::ACCOUNTS_OPENING
-      HTTP.default_options = HTTP::Options.new(features: {
-                                           logging: {
-                                             logger: Logger.new(STDOUT)
-                                           }
-                                         })
+      # HTTP.default_options = HTTP::Options.new(features: {
+      #                                      logging: {
+      #                                        logger: Logger.new(STDOUT)
+      #                                      }
+      #                                    })
     end
 
     def method_missing(name, **kwargs)
