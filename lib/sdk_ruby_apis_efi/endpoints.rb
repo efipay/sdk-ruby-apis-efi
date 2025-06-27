@@ -107,8 +107,8 @@ module SdkRubyApisEfi
           .method(settings[:method])
           .call(url, json: body, ssl_context: OpenSSL::SSL::SSLContext.new.tap do |ctx|
             ctx.set_params(
-              cert: OpenSSL::X509::Certificate.new(File.read(@options[:certificate])),
-              key: OpenSSL::PKey::RSA.new(File.read(@options[:certificate]))
+              cert: OpenSSL::X509::Certificate.new(@options[:certificate]),
+              key: OpenSSL::PKey::RSA.new(@options[:certificate])
             )
           end)
       else
@@ -143,8 +143,8 @@ module SdkRubyApisEfi
                      .basic_auth(auth_headers)
                      .post(url, json: auth_body, ssl_context: OpenSSL::SSL::SSLContext.new.tap do |ctx|
                        ctx.set_params(
-                         cert: OpenSSL::X509::Certificate.new(File.read(@options[:certificate])),
-                         key: OpenSSL::PKey::RSA.new(File.read(@options[:certificate]))
+                         cert: OpenSSL::X509::Certificate.new(@options[:certificate]),
+                         key: OpenSSL::PKey::RSA.new(@options[:certificate])
                        )
                      end)
 

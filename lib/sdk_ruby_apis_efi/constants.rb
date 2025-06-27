@@ -383,10 +383,15 @@ module SdkRubyApisEfi
             route: "/v2/rec/",
             method: "get"
           },
+          listChargesRecurring: {
+            route: "/v2/cobr",
+            method: "get"
+          },
           createLocationRecurring: {
             route: "/v2/locrec",
             method: "post"
           }
+
         }
       }.freeze
 
