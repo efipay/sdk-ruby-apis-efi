@@ -28,6 +28,10 @@ module SdkRubyApisEfi
                         route: "/v1/charge/:id",
                         method: "get"
                     },
+                    listCharges: {
+                        route: "/v1/charges",
+                        method: "get"
+                    },
                     updateChargeMetadata: {
                         route: "/v1/charge/:id/metadata",
                         method: "put"
@@ -48,6 +52,14 @@ module SdkRubyApisEfi
                         route: "/v1/charge/:id/cancel",
                         method: "put"
                     },
+                    refundCard: {
+                        route: "/v1/charge/card/:id/refund",
+                        method: "post"
+                    },
+                    cardPaymentRetry: {
+                        route: "/v1/charge/:id/retry",
+                        method: "post"
+                    },
                     createCarnet: {
                         route: "/v1/carnet",
                         method: "post"
@@ -58,6 +70,10 @@ module SdkRubyApisEfi
                     },
                     updateCarnetParcel: {
                         route: "/v1/carnet/:id/parcel/:parcel",
+                        method: "put"
+                    },
+                    updateCarnetParcels: {
+                        route: "/v1/carnet/:id/parcels",
                         method: "put"
                     },
                     updateCarnetMetadata: {
@@ -168,6 +184,10 @@ module SdkRubyApisEfi
                         route: "/v1/plan/:id",
                         method: "put"
                     },
+                    updateSubscription: {
+                        route: "/v1/subscription/:id",
+                        method: "put"
+                    },
                     defineBalanceSheetBillet: {
                         route: "/v1/charge/:id/balance-sheet",
                         method: "post"
@@ -183,6 +203,30 @@ module SdkRubyApisEfi
                     settleCarnetParcel: {
                         route: "/v1/carnet/:id/parcel/:parcel/settle",
                         method: "put"
+                    },
+                    listStatementFiles: {
+                        route: "/v1/extrato-cnab/arquivos",
+                        method: "get"
+                    },
+                    getStatementFile: {
+                        route: "/v1/extrato-cnab/download/:nome_arquivo",
+                        method: "get"
+                    },
+                    listStatementRecurrences: {
+                        route: "/v1/extrato-cnab/agendamentos",
+                        method: "get"
+                    },
+                    createStatementRecurrency: {
+                        route: "/v1/extrato-cnab/agendar",
+                        method: "post"
+                    },
+                    updateStatementRecurrency: {
+                        route: "/v1/extrato-cnab/agendar/:identificador",
+                        method: "patch"
+                    },
+                    createSftpKey: {
+                        route: "/v1/extrato-cnab/gerar-chaves",
+                        method: "post"
                     }
                 }
             }
@@ -211,6 +255,34 @@ module SdkRubyApisEfi
                     },
                     pixDeleteWebhook: {
                         route: "/v2/webhook/:chave",
+                        method: "delete"
+                    },
+                    pixResendWebhook: {
+                        route: "/v2/gn/webhook/reenviar",
+                        method: "post"
+                    },
+                    pixConfigWebhookRecurrenceAutomatic: {
+                        route: "/v2/webhookrec",
+                        method: "put"
+                    },
+                    pixListWebhookRecurrenceAutomatic: {
+                        route: "/v2/webhookrec",
+                        method: "get"
+                    },
+                    pixDeleteWebhookRecurrenceAutomatic: {
+                        route: "/v2/webhookrec",
+                        method: "delete"
+                    },
+                    pixConfigWebhookAutomaticCharge: {
+                        route: "/v2/webhookcobr",
+                        method: "put"
+                    },
+                    pixListWebhookAutomaticCharge: {
+                        route: "/v2/webhookcobr",
+                        method: "get"
+                    },
+                    pixDeleteWebhookAutomaticCharge: {
+                        route: "/v2/webhookcobr",
                         method: "delete"
                     },
                     pixCreateCharge: {
@@ -245,6 +317,10 @@ module SdkRubyApisEfi
                         route: "/v2/gn/pix/:idEnvio",
                         method: "put"
                     },
+                    pixSendSameOwnership: {
+                        route: "/v2/gn/pix/:idEnvio/mesma-titularidade",
+                        method: "put"
+                    },
                     pixSendDetailId: {
                         route: "/v2/gn/pix/enviados/id-envio/:idEnvio",
                         method: "get"
@@ -256,6 +332,14 @@ module SdkRubyApisEfi
                     pixSendList: {
                         route: "/v2/gn/pix/enviados",
                         method: "get"
+                    },
+                    pixQrCodePay: {
+                        route: "/v2/gn/pix/:idEnvio/qrcode",
+                        method: "put"
+                    },
+                    pixQrCodeDetail: {
+                        route: "/v2/gn/qrcodes/detalhar",
+                        method: "post"
                     },
                     pixDetailReceived: {
                         route: "/v2/pix/:e2eId",
@@ -283,6 +367,22 @@ module SdkRubyApisEfi
                     },
                     pixUnlinkTxidLocation: {
                         route: "/v2/loc/:id/txid",
+                        method: "delete"
+                    },
+                    pixCreateLocationRecurrenceAutomatic: {
+                        route: "/v2/locrec",
+                        method: "post"
+                    },
+                    pixListLocationRecurrenceAutomatic: {
+                        route: "/v2/locrec",
+                        method: "get"
+                    },
+                    pixDetailLocationRecurrenceAutomatic: {
+                        route: "/v2/locrec/:id",
+                        method: "get"
+                    },
+                    pixUnlinkLocationRecurrenceAutomatic: {
+                        route: "/v2/locrec/:id/idRec",
                         method: "delete"
                     },
                     pixCreateEvp: {
@@ -368,6 +468,90 @@ module SdkRubyApisEfi
                     detailReport: {
                         route: "/v2/gn/relatorios/:id",
                         method: "get"
+                    },
+                    medList: {
+                        route: "/v2/gn/infracoes",
+                        method: "get"
+                    },
+                    medDefense: {
+                        route: "/v2/gn/infracoes/:idInfracao/defesa",
+                        method: "post"
+                    },
+                    pixKeysBucket: {
+                        route: "/v2/gn/chaves/balde",
+                        method: "get"
+                    },
+                    pixGetReceipt: {
+                        route: "/v2/gn/pix/comprovantes",
+                        method: "get"
+                    },
+                    pixCreateDueChargeBatch: {
+                        route: "/v2/lotecobv/:id",
+                        method: "put"
+                    },
+                    pixUpdateDueChargeBatch: {
+                        route: "/v2/lotecobv/:id",
+                        method: "patch"
+                    },
+                    pixDetailDueChargeBatch: {
+                        route: "/v2/lotecobv/:id",
+                        method: "get"
+                    },
+                    pixListDueChargeBatch: {
+                        route: "/v2/lotecobv",
+                        method: "get"
+                    },
+                    pixDetailRecurrenceAutomatic: {
+                        route: "/v2/rec/:idRec",
+                        method: "get"
+                    },
+                    pixUpdateRecurrenceAutomatic: {
+                        route: "/v2/rec/:idRec",
+                        method: "patch"
+                    },
+                    pixListRecurrenceAutomatic: {
+                        route: "/v2/rec",
+                        method: "get"
+                    },
+                    pixCreateRecurrenceAutomatic: {
+                        route: "/v2/rec",
+                        method: "post"
+                    },
+                    pixCreateRequestRecurrenceAutomatic: {
+                        route: "/v2/solicrec",
+                        method: "post"
+                    },
+                    pixDetailRequestRecurrenceAutomatic: {
+                        route: "/v2/solicrec/:idSolicRec",
+                        method: "get"
+                    },
+                    pixUpdateRequestRecurrenceAutomatic: {
+                        route: "/v2/solicrec/:idSolicRec",
+                        method: "patch"
+                    },
+                    pixCreateAutomaticChargeTxid: {
+                        route: "/v2/cobr/:txid",
+                        method: "put"
+                    },
+                    pixUpdateAutomaticCharge: {
+                        route: "/v2/cobr/:txid",
+                        method: "patch"
+                    },
+                    pixDetailAutomaticCharge: {
+                        route: "/v2/cobr/:txid",
+                        method: "get"
+                    },
+                    pixCreateAutomaticCharge: {
+                        route: "/v2/cobr",
+                        method: "post"
+                    },
+                    pixListAutomaticCharge: {
+                        route: "/v2/cobr",
+                        method: "get"
+                    },
+                    pixRetryRequestAutomatic: {
+                        route: "/v2/cobr/:txid/retentativa/:data",
+                        method: "post"
                     }
                 }
             }
@@ -407,9 +591,85 @@ module SdkRubyApisEfi
                         method: "post"
                     },
                     ofCancelSchedulePix: {
-                    route: "/v1/pagamentos/pix/:identificadorPagamento/cancelar",
-                    method: "patch"
+                        route: "/v1/pagamentos/pix/:identificadorPagamento/cancelar",
+                        method: "patch"
                     },
+                    ofListSchedulePixPayment: {
+                        route: "/v1/pagamentos-agendados/pix",
+                        method: "get"
+                    },
+                    ofStartSchedulePixPayment: {
+                        route: "/v1/pagamentos-agendados/pix",
+                        method: "post"
+                    },
+                    ofDevolutionSchedulePix: {
+                        route: " /v1/pagamentos-agendados/pix/:identificadorPagamento/devolver",
+                        method: "post"
+                    },
+                    ofStartRecurrencyPixPayment: {
+                        route: "/v1/pagamentos-recorrentes/pix",
+                        method: "post"
+                    },
+                    ofListRecurrencyPixPayment: {
+                        route: "/v1/pagamentos-recorrentes/pix",
+                        method: "get"
+                    },
+                    ofCancelRecurrencyPix: {
+                        route: "/v1/pagamentos-recorrentes/pix/:identificadorPagamento/cancelar",
+                        method: "patch"
+                    },
+                    ofDevolutionRecurrencyPix: {
+                        route: "/v1/pagamentos-recorrentes/pix/:identificadorPagamento/devolver",
+                        method: "post"
+                    },
+                    ofReplaceRecurrencyPixParcel: {
+                        route: "/v1/pagamentos-recorrentes/pix/:identificadorPagamento/substituir/:endToEndId",
+                        method: "patch"
+                    },
+                    ofCreateBiometricEnrollment: {
+                        route: "/v1/pagamentos-biometria/vinculos",
+                        method: "post"
+                    },
+                    ofListBiometricEnrollment: {
+                        route: "/v1/pagamentos-biometria/vinculos",
+                        method: "get"
+                    },
+                    ofRevokeBiometricEnrollment: {
+                        route: "/v1/pagamentos-biometria/vinculos",
+                        method: "patch"
+                    },
+                    ofCreateBiometricPixPayment: {
+                        route: "/v1/pagamentos-biometria/pix",
+                        method: "post"
+                    },
+                    ofListBiometricPixPayment: {
+                        route: "/v1/pagamentos-biometria/pix",
+                        method: "get"
+                    },
+                    ofCreateAutomaticEnrollment: {
+                        route: "/v1/pagamentos-automaticos/adesao",
+                        method: "post"
+                    },
+                    ofListAutomaticEnrollment: {
+                        route: "/v1/pagamentos-automaticos/adesao",
+                        method: "get"
+                    },
+                    ofUpdateAutomaticEnrollment: {
+                        route: "/v1/pagamentos-automaticos/adesao",
+                        method: "patch"
+                    },
+                    ofCreateAutomaticPixPayment: {
+                        route: "/v1/pagamentos-automaticos/pix",
+                        method: "post"
+                    },
+                    ofListAutomaticPixPayment: {
+                        route: "/v1/pagamentos-automaticos/pix",
+                        method: "get"
+                    },
+                    ofCancelAutomaticPixPayment: {
+                        route: "/v1/pagamentos-automaticos/pix",
+                        method: "patch"
+                    }
                 }
             }
             PAYMENTS = { 
@@ -436,6 +696,18 @@ module SdkRubyApisEfi
                     },
                     payListPayments: {
                         route: "/v1/resumo",
+                        method: "get"
+                    },
+                    payConfigWebhook: {
+                        route: "/v1/webhook",
+                        method: "put"
+                    },
+                    payDeleteWebhook: {
+                        route: "/v1/webhook",
+                        method: "delete"
+                    },
+                    payListWebhook: {
+                        route: "/v1/webhook",
                         method: "get"
                     }
                 }
