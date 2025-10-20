@@ -5,7 +5,7 @@ require_relative "lib/sdk_ruby_apis_efi/version"
 Gem::Specification.new do |spec|
   spec.name = "sdk_ruby_apis_efi"
   spec.version = SdkRubyApisEfi::VERSION
-  spec.authors = ["João Muniz"]
+  spec.authors = ["Debora Amaral"]
   spec.email = ["consultoria@sejaefi.com.br"]
  
   spec.summary       = "Efí Pay API Ruby Gem"
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
  
   spec.homepage      = "https://github.com/efipay/sdk-ruby-apis-efi"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.7.0"
 
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do

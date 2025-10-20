@@ -1,0 +1,16 @@
+require 'sdk_ruby_apis_efi'
+require_relative "../../credentials"
+
+options = {
+  client_id: CREDENTIALS::CLIENT_ID,
+  client_secret: CREDENTIALS::CLIENT_SECRET,
+  sandbox: CREDENTIALS::SANDBOX
+}
+
+params = {
+  inicio: '2022-04-29',
+  fim: '2024-12-29'
+}
+
+efipay = SdkRubyApisEfi.new(options)
+puts efipay.ofListRecurrencyPixPayment(params: params)
