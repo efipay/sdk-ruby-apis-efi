@@ -21,7 +21,7 @@ module SdkRubyApisEfi
       @payments = Constants::APIs::PAYMENTS
       @accounts_opening = Constants::APIs::ACCOUNTS_OPENING
     end
-  
+
     def method_missing(name, **kwargs)
       if @charges[:ENDPOINTS].include?(name)
         @endpoints = @charges[:ENDPOINTS]
@@ -32,28 +32,28 @@ module SdkRubyApisEfi
         @endpoints = @pix[:ENDPOINTS]
         @urls = @pix[:URL]
         request(@pix[:ENDPOINTS][name], **kwargs)
-      
+
       elsif @open_finance[:ENDPOINTS].include?(name)
         @endpoints = @open_finance[:ENDPOINTS]
         @urls = @open_finance[:URL]
         request(@open_finance[:ENDPOINTS][name], **kwargs)
-      
+
       elsif @payments[:ENDPOINTS].include?(name)
         @endpoints = @payments[:ENDPOINTS]
         @urls = @payments[:URL]
         request(@payments[:ENDPOINTS][name], **kwargs)
-      
+
       elsif @accounts_opening[:ENDPOINTS].include?(name)
         @endpoints = @accounts_opening[:ENDPOINTS]
         @urls = @accounts_opening[:URL]
         request(@accounts_opening[:ENDPOINTS][name], **kwargs)
-      
+
       else
         raise "Method not found"
       end
-      
+
     end
-  
+
     def request(settings, **kwargs)
 
       params = kwargs[:params] || {}
@@ -66,9 +66,8 @@ module SdkRubyApisEfi
         authenticate
       end
 
-    
       response = send(settings, params, body, headers)
-      
+
       begin
         JSON.parse(response.body)
       rescue JSON::ParserError
@@ -76,9 +75,9 @@ module SdkRubyApisEfi
       else
         JSON.parse(response.body)
       end
-  
+
     end
-  
+
     def send(settings, params, body, headersComplement)
       url = build_url(settings[:route], params)
       if body == {}
@@ -88,24 +87,24 @@ module SdkRubyApisEfi
         "accept" => "application/json",
         "api-sdk" => "efi-ruby-#{SdkRubyApisEfi::VERSION}"
       }
-      
+
       if headersComplement.any?
         headersComplement.each do |key, value|
           headers[key] = value
         end
       end
-  
+
       if @options.has_key?(:partner_token)
         headers['partner-token'] = @options[:partner_token]
       end
 
-      
+
       if @options[:"x-skip-mtls-checking"]
         headers["x-skip-mtls-checking"] = @options[:"x-skip-mtls-checking"]
       end
 
-      @token = @token.parse
-      
+      @token = @token.parse unless @token.is_a?(Hash)
+
       if @options.has_key?(:certificate)
 
         HTTP
@@ -119,7 +118,7 @@ module SdkRubyApisEfi
             )
           end)
       else
-        
+
         HTTP
             .headers(headers)
             .auth("Bearer #{@token['access_token']}")
@@ -127,7 +126,7 @@ module SdkRubyApisEfi
             .call(url, json: body)
       end
 
-  
+
     end
 
     def authenticate
@@ -136,20 +135,20 @@ module SdkRubyApisEfi
 
       headers = {
         "accept" => "application/json",
-        "api-sdk" => "efi-ruby-#{SdkRubyApisEfi::VERSION}"  
+        "api-sdk" => "efi-ruby-#{SdkRubyApisEfi::VERSION}"
       }
 
       auth_headers = {
         user: @options[:client_id],
         pass: @options[:client_secret]
       }
-      
+
       auth_body =  {grant_type: :client_credentials}
 
       if (@options.has_key?(:certificate))
-      
-        response = 
-          HTTP 
+
+        response =
+          HTTP
           .headers(headers)
           .basic_auth(auth_headers)
           .post(url, json: auth_body, ssl_context: OpenSSL::SSL::SSLContext.new.tap do |ctx|
@@ -158,15 +157,15 @@ module SdkRubyApisEfi
               key:  OpenSSL::PKey::RSA.new(File.read(@options[:certificate]))
             )
           end)
-          
+
       else
-        response = 
-          HTTP     
+        response =
+          HTTP
           .headers(headers)
           .basic_auth(auth_headers)
           .post(url, json: auth_body)
       end
-  
+
       if response.status.to_s == STATUS::UNAUTHORIZED
         fail "unable to authenticate"
       else
@@ -174,7 +173,7 @@ module SdkRubyApisEfi
       end
     end
 
- 
+
     def get_url
       @base_url = @urls[:sandbox]
       if @options.has_key?(:sandbox)
@@ -182,14 +181,14 @@ module SdkRubyApisEfi
       end
 
     end
-  
+
     def build_url(route, params)
       params = {} if params.nil?
       route = remove_placeholders(route, params)
       complete_url = complete_url(route, params)
-      
+
     end
-  
+
     def remove_placeholders(route, params)
       regex = /\:(\w+)/
       route.scan(regex).each do |key|
@@ -201,7 +200,7 @@ module SdkRubyApisEfi
 
       return route
     end
-    
+
     def query_string(params)
       mapped = params.map { |p, value| "#{p}=#{value}" }
       mapped.join('&')
@@ -212,7 +211,7 @@ module SdkRubyApisEfi
         "#{key[0]}=#{CGI.escape(key[1].to_s)}"
       end.join("&")
     end
-    
+
     def complete_url(route, params)
       mapped = map_params(params)
       if !mapped.empty?
@@ -221,7 +220,6 @@ module SdkRubyApisEfi
         "#{@base_url}#{route}"
       end
     end
-    
+
   end
 end
-
